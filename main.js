@@ -2,6 +2,7 @@ const prev = document.getElementById("btn-prev"),
   next = document.getElementById("btn-next"),
   slides = document.querySelectorAll(".slide"),
   dots = document.querySelectorAll(".dot");
+
 let index = 0;
 
 const activeSlide = (n) => {
@@ -43,5 +44,14 @@ const prevSlide = () => {
   }
 };
 
+dots.forEach((item, indexDot) => {
+  item.addEventListener("click", () => {
+    index = indexDot;
+    prepareCurrentSlide(index);
+  });
+});
+
 next.addEventListener("click", nextSlide);
 prev.addEventListener("click", prevSlide);
+
+let timer = setInterval(nextSlide, 2000);
